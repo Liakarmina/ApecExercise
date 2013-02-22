@@ -1,12 +1,38 @@
 <h1>Listing chats</h1>
 
-
-  <ul id="chat_container">
+<ul id="chat_container">
 <% @chats.each do |chat| %>
-  
-    <li><%= chat.user.name %> dijo: <%= chat.message %>
+ <script type="text/javascript">
+ 
+ </script> 
+    <li><%= chat.name %> dijo: <%= chat.message %>
     </li>     
   
 <% end %>
 </ul>
 <%= render 'form' %>
+
+<script type="text/javascript">
+  Pusher.log = function(message){
+    if(window.console && window.console.log)window.console.log(message);
+
+  };
+
+  WEB_SOCKET_DEBUG = true;
+
+  var pusher = new Pusher('e299e24202f901e7f8b8')
+  var channel = pusher.subscribe('APEC');
+
+  channel.bind('chat:create', function(data){
+    var message = "<li id='chat_"+ data.id +"'>"
+        message += data.name +":"+ data.message
+        message += "</li>"
+
+        $("#chat_container").append(message);
+        $("#message_content").val("");
+        $("#message_content").focus();
+
+
+  });
+
+</script>

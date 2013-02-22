@@ -2,15 +2,12 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def login
-
-       @users = User.all
-
+    @users = User.all
     @user = User.new(params[:user])
   end
 
   def validate_access
        $user = User.new(params[:user])
-
     if User.find_by_email_and_name($user.email, $user.name)
       redirect_to users_url
     else
@@ -21,7 +18,6 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }

@@ -11,16 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130221234418) do
+ActiveRecord::Schema.define(:version => 20130222043412) do
 
   create_table "chats", :force => true do |t|
     t.text     "message"
-    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "name"
   end
-
-  add_index "chats", ["user_id"], :name => "index_chats_on_user_id"
 
   create_table "friend_lists", :force => true do |t|
     t.string   "Idfriend"

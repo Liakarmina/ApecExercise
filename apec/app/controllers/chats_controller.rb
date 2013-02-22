@@ -2,8 +2,8 @@ class ChatsController < ApplicationController
   # GET /chats
   # GET /chats.json
   def index
-    @chats = Chat.all
- @chat = Chat.new(params[:chat])
+  @chats = Chat.all
+  @chat = Chat.new(params[:chat])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,7 +42,6 @@ class ChatsController < ApplicationController
   # POST /chats.json
   def create
     @chat = Chat.new(params[:chat])
-
     respond_to do |format|
       if @chat.save
         format.html { redirect_to @chat, notice: 'Chat was successfully created.' }

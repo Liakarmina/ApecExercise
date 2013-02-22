@@ -2,6 +2,8 @@ class FriendListsController < ApplicationController
   # GET /friend_lists
   # GET /friend_lists.json
   def index
+   @users = User.all
+    @user = User.new(params[:user])
     @friend_lists = FriendList.all
 
     respond_to do |format|
