@@ -1,0 +1,25 @@
+<h1>Listing friend_lists</h1>
+
+<table>
+  <tr>
+    <th>Idfriend</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @friend_lists.each do |friend_list| %>
+  <tr>
+    <td><%= friend_list.Idfriend %></td>
+    <td><%= friend_list.user %></td>
+    <td><%= link_to 'Show', friend_list %></td>
+    <td><%= link_to 'Edit', edit_friend_list_path(friend_list) %></td>
+    <td><%= link_to 'Destroy', friend_list, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Friend list', new_friend_list_path %>
